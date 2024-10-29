@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             <Image
               width={150}
               height={150}
-              src="/logo.png"
+              src="/secondary_logo.png"
               alt="Company Logo"
               className="max-w-[150px] mb-4"
             />

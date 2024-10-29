@@ -1,5 +1,4 @@
 "use client"
-
 import Card from "@/components/ui/Card";
 import { useGetEnrolledCoursesQuery } from "@/redux/api/course/courseApi";
 import { TUser } from "@/redux/features/auth/authSlice";
@@ -7,6 +6,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { TCourse, TEnrolledCourse } from "@/types/courseType";
 import {  Spin } from "antd";
+import NotFoundRnrolledCourse from "./NotFoundRnrolledCourse";
 
 const EnrolledCourses = () => {
     const user=useAppSelector((state : RootState)=>state.auth.user) as TUser;
@@ -15,7 +15,9 @@ const EnrolledCourses = () => {
     // console.log(courses)
     return (
         <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+        {
+          courses ? (
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
           {
             isLoading ?
               (
@@ -29,6 +31,11 @@ const EnrolledCourses = () => {
               )
           }
         </div>
+          )
+          :(
+            <NotFoundRnrolledCourse/>
+          )
+        }
       </div>
     );
 };

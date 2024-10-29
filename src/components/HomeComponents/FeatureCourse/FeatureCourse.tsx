@@ -3,7 +3,6 @@ import React from "react";
 import { Tabs, type TabsProps } from "antd";
 import PopularCourse from "./PopularCourse";
 import EnrolledCourses from "./EnrolledCourses";
-import NotFoundRnrolledCourse from "./NotFoundRnrolledCourse";
 const FeaturedCourses = () => {
 
   const items: TabsProps["items"] = [
@@ -20,8 +19,8 @@ const FeaturedCourses = () => {
     {
       key: "3",
       label: "Enrolled Courses",
-      // children: <EnrolledCourses />,
-      children: <NotFoundRnrolledCourse />,
+      children: <EnrolledCourses />,
+    
     },
   ];
   return (

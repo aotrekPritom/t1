@@ -3,7 +3,7 @@ import { RootState } from "../store";
 import { TagTypeList } from "@/types/tagType";
 
 const baseQueryF = fetchBaseQuery({
-    baseUrl: "http://192.168.10.77:4000/api/v1",
+    baseUrl: "http://localhost:4000/api/v1",
     prepareHeaders: (headers,api) => {
         const token = (api.getState() as RootState).auth.token;
         if (token) {

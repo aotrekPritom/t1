@@ -10,12 +10,11 @@ import { GrArticle } from "react-icons/gr";
 import {  useEnrolledCourseMutation, useGetIsEnrolledCourseQuery, useGetSingleCourseByIdQuery } from "@/redux/api/course/courseApi";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { Spin } from "antd";
+import { Rate, Spin } from "antd";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
-// import RatingStar from "./RatingStar";
-// import CourseContent from "./CourseContent";
+import moment from 'moment'
 
 type TProps ={
   params:{
@@ -28,8 +27,13 @@ const CourseDetailsPage = ({params}:TProps) => {
   const {data:isEnrolled,isLoading:isEnrolledLoading}=useGetIsEnrolledCourseQuery(params.courseId);
   const {data,isLoading}=useGetSingleCourseByIdQuery(params.courseId)
   const course=data?.data;
+  // console.log(course)
   const {token}=useAppSelector((state:RootState)=>state.auth)
   const router=useRouter();
+
+  const formattedDate = moment(course?.updatedAt).format("DD MMM YYYY");
+
+
 
   const handleSubscription = async () => {
       if(token){
@@ -93,302 +97,7 @@ const CourseDetailsPage = ({params}:TProps) => {
 
 
 
-  const CourseList = {
-    name: "The Complete 2023 Web Development Bootcamp",
-    description:
-      "Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, MongoDB, Web3 and DApps",
-    creator: "Dr. Angela Yu",
-    rating: 3.5,
-    noOfUserRated: "304,443",
-    totalStudents: "1,,074,271",
-    totalHours: 74,
-    totalLecture: 66,
-    totalTopic: 66,
-    level: "All Level",
-    discountPrice: 649,
-    price: 3199,
-    bestSeller: true,
-    thumbnail: "https://img-b.udemycdn.com/course/240x135/1565838_e54e_16.jpg",
-    introUrl: "",
-    learning: [
-      "Build 16 web development projects for your portfolio, ready to apply for junior developer jobs",
-      "After the course you will be able to build ANY website you want.",
-      "Work as a freelance web developer.",
-      "Master backend development with Node.",
-      "Learn the latest technologies, including Javascript, React, Node and even Web3 development.",
-      "Build fully-fledged websites and web apps for your startup or business.",
-      "Master frontend development with React",
-      "Learn professional developer best practices.",
-    ],
-    courseContentData: [
-      {
-        topicTitle: "Front-End Web Development",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intorduction to HTML",
-        totalTopicDuration: "0",
-        totalTopicLectures: "0",
-        content: "",
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-      {
-        topicTitle: "Intermexdiate HTML",
-        totalTopicDuration: "30",
-        totalTopicLectures: "9",
-        content: [
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-          {
-            lectureTitle: "How to Get Help When You're Stuck",
-            duration: "03:08",
-          },
-        ],
-      },
-    ],
 
-    requirements: [
-      "No programming experience needed - I'll teach you everything you need to know",
-      "A computer with access to the internet",
-      "No paid software required",
-      "I'll walk you through, step-by-step how to get all the software installed and set up",
-    ],
-  };
   const [activeTab, setActiveTab] = useState(0);
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -400,7 +109,7 @@ const CourseDetailsPage = ({params}:TProps) => {
       content: (
         <div>
           <h1 className="text-xl font-bold">
-            Subscribe to Udemy’s top courses
+            Subscribe to Eduvalt top courses
           </h1>
           <p className="text-sm text-gray-600 py-2">
             Get this course, plus 10,500+ of our top-rated courses, with
@@ -427,7 +136,7 @@ const CourseDetailsPage = ({params}:TProps) => {
       )}
 
           <div className=" text-center py-2">
-            <p className="text-sm text-gray-600">Starting at ₹750 per month</p>
+            <p className="text-sm text-gray-600">Starting at ${course?.price} for this course</p>
             <p className="text-sm text-gray-600">Cancel anytime</p>
           </div>
 
@@ -438,13 +147,12 @@ const CourseDetailsPage = ({params}:TProps) => {
           </div>
 
           <div className=" flex items-center  gap-2 py-2">
+       
             <p className="text-2xl font-extrabold">
-              {CourseList.discountPrice
-                ? `₹${CourseList.discountPrice}`
-                : `₹${CourseList.price}`}
+              ${course?.price}
             </p>
             <p className="text-xl text-gray-500 line-through">
-              {CourseList.discountPrice && `₹${CourseList.price}`}
+              {`$${course?.discountPrice}`}
             </p>
           </div>
 
@@ -454,9 +162,9 @@ const CourseDetailsPage = ({params}:TProps) => {
           )
           :
           (
-            <button className={`text-xl py-2 bg-transparent border-2 hover:bg-gray-400 w-full p-2 rounded-sm font-bold ${isEnrolled ? 'text-green-500' : 'text-black'} hover:text-black pointer-events-none `}>
+            <button className={`text-xl py-2 bg-transparent border-2 hover:bg-gray-400 w-full p-2 rounded-sm font-bold ${isEnrolled?.data ? 'text-green-500' : 'text-black'} hover:text-black pointer-events-none `}>
             {
-              isEnrolled ? 'You Allready Enrolled This Course' : ' Buy This Course'
+              isEnrolled?.data ? 'You Allready Enrolled This Course' : ' Buy This Course'
             }
            
           </button>
@@ -487,13 +195,18 @@ const CourseDetailsPage = ({params}:TProps) => {
     },
   ];
 
-
+const requirements=[
+  "No programming experience needed - I'll teach you everything you need to know",
+  "A computer with access to the internet",
+  "No paid software required",
+  "I'll walk you through, step-by-step how to get all the software installed and set up",
+]
 
 
   const courseIncludes = [
-    { text: "62.5 hours on-demand video", icon: <LiaFileVideo /> },
+    { text: `${course?.timeDuration} hours on-demand video`, icon: <LiaFileVideo /> },
     {
-      text: "105 downloadable resources",
+      text: `${course?.resources} downloadable resources`,
       icon: <AiOutlineDownload />,
     },
     {
@@ -504,12 +217,20 @@ const CourseDetailsPage = ({params}:TProps) => {
       text: "Access on mobile and TV",
       icon: <AiOutlineMobile />,
     },
-    { text: "70 articles", icon: <GrArticle /> },
+    { text: `${course?.article} articles`, icon: <GrArticle /> },
     {
       text: "Certificate of completion",
       icon: <GiTargetPrize />,
     },
   ];
+
+  if(isLoading){
+    return (
+
+        <Spin size="large" fullscreen/>
+    
+    )
+  }
 
 
   return (
@@ -544,7 +265,7 @@ const CourseDetailsPage = ({params}:TProps) => {
             <div className="xl:hidden border-8 border-purple-400">
               <video
                 className="h-full w-full"
-                src={CourseList.introUrl}
+                src='https://videocdn.cdnpk.net/videos/d48bfa8f-1ad1-4dd8-9f48-c3658782115a/horizontal/previews/clear/large.mp4?token=exp=1730202368~hmac=eb4730cfc6de60e52427efe080d1da58afb5f065188058d9fb7f12913e9ce919'
                 controls
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
@@ -555,50 +276,46 @@ const CourseDetailsPage = ({params}:TProps) => {
             {/* Description */}
             <div className=" space-y-4">
               <h1 className="text-2xl sm:text-4xl text-white font-bold">
-                {CourseList.name}
-                {/* {course?.name} */}
+                {course?.name}
               </h1>
 
               <p className="sm:text-xl text-white">
-                Become a Full-Stack Web Developer with just ONE course. HTML,
-                CSS, Javascript, Node, React, MongoDB, Web3 and DApps
+              {course?.description}
               </p>
 
               <div className="text-sm sm:text-md flex items-center gap-1 sm:gap-2">
                 <div className=" bg-yellow-300 px-2 w-min rounded">
-                  {CourseList.bestSeller ? (
+              
                     <p className=" text-sm font-semibold">BestSeller</p>
-                  ) : (
-                    <></>
-                  )}
+            
                 </div>
 
                 <p className="font-bold text-orange-400 text-sm">
-                  {CourseList.rating}
+                  {course?.rating}
                 </p>
 
-                <div>{/* <RatingStar rating={CourseList.rating} /> */}</div>
-
-                <p className="text-purple-500 text-sm underline">{`(${CourseList.noOfUserRated} ratings)`}</p>
+                <div>
+                <Rate className="custom-rating" disabled allowHalf  defaultValue={course?.rating} count={5} />
+                </div>
 
                 <p className="text-white ">
-                  {CourseList.totalStudents} students
+                  {course?.students?.length} students
                 </p>
               </div>
 
               <p className=" text-white">
-                Created By:{" "}
-                <span className=" text-purple-500 ">{CourseList.creator}</span>
+                Created By:
+                <span className=" text-purple-500 ml-3">{course?.teacher?.name}</span>
               </p>
 
               <div className=" flex gap-3">
                 <p className=" text-sm text-white flex items-center gap-1">
                   <MdOutlineDoNotDisturbAlt />
-                  Last Update 8/2023
+                  Last Update {formattedDate}
                 </p>
                 <p className=" text-sm text-white flex items-center gap-1">
                   <BiWorld />
-                  English
+                  {course?.language}
                 </p>
               </div>
             </div>
@@ -609,7 +326,7 @@ const CourseDetailsPage = ({params}:TProps) => {
             <div className="hidden xl:block border-4  border-purple-400">
               <video
                 className="w-full h-full"
-                src={CourseList.introUrl}
+                src='https://videocdn.cdnpk.net/videos/d48bfa8f-1ad1-4dd8-9f48-c3658782115a/horizontal/previews/clear/large.mp4?token=exp=1730202368~hmac=eb4730cfc6de60e52427efe080d1da58afb5f065188058d9fb7f12913e9ce919'
                 controls
                 controlsList="nodownload nofullscreen noremoteplayback"
                 disablePictureInPicture
@@ -660,9 +377,7 @@ const CourseDetailsPage = ({params}:TProps) => {
       {/* Course Content  */}
       <div className="py-[1rem] lg:w-[80%] xl:w-[75%] m-auto px-3 ">
         <h2 className="text-2xl  font-bold">Course Content</h2>
-        <p className="py-2 text-gray-600">{`${CourseList.courseContentData.length} secions . ${CourseList.totalLecture} lectures . ${CourseList.totalHours} hours`}</p>
-
-        {/* <CourseContent CourseList={CourseList} /> */}
+        <p className="py-2 text-gray-600">{`${course?.topics?.length} secions . ${course?.lectures} lectures . ${course?.timeDuration} hours`}</p>
       </div>
 
       {/* Requirements */}
@@ -671,7 +386,7 @@ const CourseDetailsPage = ({params}:TProps) => {
           <h2 className="text-2xl py-2 font-bold">Requirements</h2>
 
           <div className="py-2">
-            {CourseList.requirements.map((item, index) => (
+            {requirements?.map((item, index) => (
               <li className="" key={index}>
                 {item}
               </li>
@@ -686,7 +401,7 @@ const CourseDetailsPage = ({params}:TProps) => {
           <h2 className="text-2xl py-2 font-bold">Description</h2>
 
           <div className="pb-4">
-            <p>{CourseList.description}</p>
+            <p>{course?.description}</p>
           </div>
 
           <div>
@@ -697,9 +412,9 @@ const CourseDetailsPage = ({params}:TProps) => {
           </div>
 
           <div className="py-2">
-            {CourseList.courseContentData.map((item, index) => (
+            {course?.topics?.map((item:string, index:number) => (
               <li className="" key={index}>
-                {item.topicTitle}
+                {item}
               </li>
             ))}
           </div>

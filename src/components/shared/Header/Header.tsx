@@ -4,7 +4,6 @@ import Link from "next/link";
 import { BiSolidGridAlt } from "react-icons/bi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
-import { TbLayoutSidebarRightCollapse } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import ReusableDrawer from "@/components/ui/Drawer";
 import Image from "next/image";
@@ -92,10 +91,10 @@ const Header = () => {
       )
         :
         (
-          <Link href='/login'>
-            <li className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+          <Link href='/login' className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+            {/* <li > */}
               Login
-            </li>
+            {/* </li> */}
           </Link>
         )
     }
@@ -105,12 +104,6 @@ const Header = () => {
     <header className="border border-b-slate-100 bg-white text-black shadow-lg">
       <nav className="container mx-auto  flex items-center py-2">
         {/* Sidebar Toggle for mobile */}
-        <label
-          htmlFor="my-drawer-2"
-          className="btn w-16 drawer-button lg:hidden"
-        >
-          <TbLayoutSidebarRightCollapse className="text-3xl" />
-        </label>
 
         {/* Logo */}
         <div>
@@ -182,20 +175,20 @@ const Header = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <ul className="flex text-md font-semibold">
             {
               user?.role===UserRole.TEACHER &&
-              <Link href='/dashboard'>
-              <li className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+              <Link href='/dashboard' className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+              {/* <li > */}
               Dashboard
-              </li>
+              {/* </li> */}
             </Link>
             }
-              <Link href='/courses'>
-                <li className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+              <Link href='/courses' className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+                {/* <li > */}
                   Courses
-                </li>
+                {/* </li> */}
               </Link>
               <li className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
                 Earn Certificate
@@ -220,7 +213,7 @@ const Header = () => {
 
             </ul>
           </div>
-          <div className="md:hidden block">
+          <div className="lg:hidden block">
             <FaBars size={30} onClick={showDrawer} />
             <ReusableDrawer
               title={
@@ -240,6 +233,9 @@ const Header = () => {
               onClose={onClose}
             >
               <ul className=" text-md font-semibold grid grid-cols-1">
+              <Link href='/courses' className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
+                  Courses
+              </Link>
                 <li className="mx-2 py-3 hover:text-blue-600 cursor-pointer relative group">
                   Tutor
                 </li>
@@ -252,9 +248,6 @@ const Header = () => {
             </ReusableDrawer>
           </div>
         </div>
-
-        {/* Hamburger Menu */}
-        <div>{/* Add your Hamburger Menu Component */}</div>
       </nav>
     </header>
   );

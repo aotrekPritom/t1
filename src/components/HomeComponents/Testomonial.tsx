@@ -26,7 +26,7 @@ const Testimonial = () => {
       role: "Art professor3",
       message:
         "I had3 the opportunity to meet with the dynamic & distinguished faculties, who are highly qualified & friendly patients. With their assist & guidance I…",
-      imageUrl: "/image1.png",
+      imageUrl: "/image2.jpg",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const Testimonial = () => {
       role: "Art professor4",
       message:
         "I had4 the opportunity to meet with the dynamic & distinguished faculties, who are highly qualified & friendly patients. With their assist & guidance I…",
-      imageUrl: "/image2.jpg",
+      imageUrl: "/image1.png",
     },
   ];
 

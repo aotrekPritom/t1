@@ -2,16 +2,15 @@ import { CiStopwatch } from "react-icons/ci";
 import { BsBarChart } from "react-icons/bs";
 import { AiOutlineFileText } from "react-icons/ai";
 import Image from "next/image";
-import { Button } from "antd";
+import { Button, Rate } from "antd";
 import Link from "next/link";
 import { TCourse } from "@/types/courseType";
 type TProps = {
   content: TCourse;
 };
 const Card = ({ content }: TProps) => {
-  // console.log(content)
   return (
-    <div className="border w-[300px] border-gray-300/50 p-2 rounded-lg hover:border-gray-300 hover:shadow-2xl transition duration-300 cursor-pointer">
+    <div className="border  w-full border-gray-300/50 p-2 rounded-lg hover:border-gray-300 hover:shadow-2xl transition duration-300 cursor-pointer">
       {/* Course Image */}
       <div className="w-full h-[200px] overflow-hidden rounded-lg mb-3 ">
         <Image
@@ -23,42 +22,29 @@ const Card = ({ content }: TProps) => {
         />
       </div>
       {/* Rating */}
-      <div className="flex items-center px-2 text-sm">
-        <p className="text-yellow-500 mr-1">4</p>
-        {/* <div className="flex">
-          {Array(5)
-            .fill(1)
-            .map((_, index) => (
-              <AiFillStar key={index} className="text-yellow-500 mr-1" />
-            ))}
-          {content.stars !== 5 && (
-            <BsStarHalf className="text-yellow-500 mr-1" />
-          )}
-        </div> */}
-        {/* <p className="text-gray-500">({content.reviews})</p> */}
-      </div>
+      <Rate className="custom-rating" disabled allowHalf  defaultValue={content?.rating} count={5} />
 
       {/* Course Title */}
       <p
         className="font-medium mb-2 px-2"
         style={{ fontFamily: "CustomRegular", fontSize: "16px" }}
       >
-        {content.name}
+        {content?.name}
       </p>
 
       {/* Lesson Count, Duration, and Level */}
       <div className="flex text-gray-500 justify-between items-center px-2 text-sm">
         <div className="flex justify-between items-center gap-1">
           <AiOutlineFileText className="" />
-          <p className="mr-1"> Lesson</p>
+          <p className="mr-1">{content?.lectures} Lectures</p>
         </div>
         <div className="flex justify-between items-center gap-1">
           <CiStopwatch className="" />
-          <p className="mr-1"> Day</p>
+          <p className="mr-1"> {content?.timeDuration} hours</p>
         </div>
         <div className="flex justify-between items-center gap-1">
           <BsBarChart className="mr-1" />
-          <p>All levels</p>
+          <p>{content?.topics?.length} Topics</p>
         </div>
       </div>
 
@@ -84,7 +70,7 @@ const Card = ({ content }: TProps) => {
               View Details
             </Button>
           </Link>
-          <p className="text-md font-semibold">${content.price}</p>
+          <p className="text-md font-semibold">${content?.price}</p>
         </div>
       </div>
     </div>

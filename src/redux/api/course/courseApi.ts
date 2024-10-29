@@ -44,7 +44,7 @@ export const courseApi = baseApi.injectEndpoints({
     getEnrolledCourses: builder.query({
       query: () => {
         return {
-           url:'/course//enrolled/courses',
+           url:'/course/enrolled/courses',
            method:"GET"
         }
       },
